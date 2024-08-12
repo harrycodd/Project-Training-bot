@@ -164,6 +164,12 @@ This is the only one where we are going to reduce all efforts to just starting w
 
 Now for many people a big question would be well how many hours do I need to pack all this training in? For the average person 6-9hrs is plenty to see the benefit. With only really 10-12 hrs being needed by those racing. As well as this most people racing can get by on 6-9hrs of training with ramping the training up to 10-12hrs for a block just outside the race season. Only really pros need to and have the physical capability to train more than 12hr weeks consistently.[Trainright](https://https://trainright.com/how-many-hours-should-cyclists-ride-fitness-performance-training/)
 
+#### Does this method carry across sports, i.e. does it carry across running and swimming especially for a triathlon.
+
+Simple anwser is yes, it does.
+
+Longer anwser is if you plan on just doing swimming or just doing running, this training method works perfectly, most likely you will have to pace it based on speed or hr, and change the overall volume but other than that it would be an identical training plan. However if you do plan on multiple discaplines for duathlon or triathlon there are some considerations. Interval workouts for different discaplines shouldn't be placed on a "base" day for another sport otherwise your cardiac system is still getting that same taxing. As much as most plans will do this I don't believe it is recommended. One hard day of your two weakest discaplines a week would be recommened and one of each would be ideal but might be a bit too taxing.
+
 #### Periodisation
 
 Now periodisation is where at the start of the year we plan out what "blocks" or "phases" we are going to go through in the year. Instead since we are using a 3:1 rule for hard to easy weeks, we are going to use an increase in amount of Z3/4 and Z5/6 efforts and a decrease in base slightly across the year to the point where the rider wants to peak, from a 80/5/15 -> 70/7.5/22.5. We feel that this might not be quite the perfect peak but would lead very very close to it. We can then ramp it down slowly until the end of the race season where we start the ramp up for next season again.
@@ -188,13 +194,38 @@ All the nutrition research seems to line up from the guys at [FastFitness.Tips](
 
 Unfortunately, I do not have enough experience in this realm to provide such detailed information on it. However, from research it seems that strength training can improve performance by around 5% for cyclist, but you only really need to do around 60 minutes a week to achieve this, and anything above 140 minutes or just over 2 hrs seems to do more damage than it benefits the body. [FastFitness.Tips](https://www.cyclingapps.net/blog/dont-do-more-than-3hrs-per-week-in-the-gym/) Unfortunately this study was quite small with just under 100 cyclist involved.  But there is also other benefits to strength training than just raw performance. It also a well known fact that it can improve efficency on the bike and help riders hold a better aero position so it might be worth doing.
 
-### How is all this research going to help us. 
+### How is all this research going to help us.
+
+#### Cycle only
 
 1. Start by establishing a goal race, if there isn't we will not use periodisation and just stick to the 70/10/20 ratio all year around. And we will ask what type of rider they want to be - Sprinter, Climber, TT Specialist, All-Rounder, or New. And how many hrs, 3-5, 6/7, 8/9, 10-12
 2. We then store this and use it to calculate what week the upcoming week is.
-3. We then ask the rider for the schedule for the week (How many days/hours he can train?) Making sure there isn't too many restdays for amount of time, i.e. 10-12hrs can only have 1 rest day.
-4. We then calculate the ratios for sessions using the information above and assign each day for the upcoming week. We can start on any day of the week, but recommend Monday for simplicity. And we can generate multiple weeks but never half weeks.
-5. We then query each days focus and hours against our workout database and use that to pick our workouts.
+3. We then calculate the ratios for sessions using the information above and assign each day for the upcoming week.
+4. We then query each days focus and hours against our workout database and use that to pick our workouts.
+5. We then add strength training on easy and or rest days.
 6. Then repeat.
 
-   At the moment this is just for cycling with no strength training. We recommend doing at least  one full body gym session a week in addition to this training with a focus on Core and Legs. But making sure to hit every muscle in the body. Make sure to keep fueled well through rides and to fuel properly before them. If you have a power meter, it will provide accurate calorie readings if you would like to structure to lose weight, or gain weight depending on the type of rider. These features will come later at some point.
+#### Run Only
+
+Same as cycle only except hours are lower. And TT specialist become Long distance and the rest stay.
+
+#### Swim Only
+
+Coming soon
+
+#### Duathlon
+
+Since with duathlon there is only really one type of person we will add a beginner and an advanced plan. Advanced will follow a similar to climber training and new will follow a similar to new.
+
+1. Find out hours to train, 3-5, etc. And find out if running is focus or cycling 1:2 effort ratio for priority to other.
+2. Then basically the same as bike except half the days are run and half are bike and one day is a brick run, i.e. bike followed by a run.
+
+#### Triathlon
+
+Coming soon
+
+#### Additional information:
+
+* Make sure to keep fueled well through rides and to fuel properly before them.
+* If you have a power meter, it will provide accurate calorie readings, if you would like to structure to lose weight, or gain weight depending on the type of rider.
+* Weight tracking features may come later at some point. Along with adjustable schedule.
