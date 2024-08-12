@@ -1,4 +1,4 @@
-# Project-AI-Training-bot
+# Project-Training-bot
 
 ## How does the Algorithm work
 
