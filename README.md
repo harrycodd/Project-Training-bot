@@ -1,1 +1,129 @@
 # Project-AI-Training-bot
+
+## How does the Algorithm work
+
+### Research
+
+First of all we have to outline basic terminology used for our training algorithm.
+
+#### Zones
+
+What is a zone? A zone is a target range of effort. Usually we will use power to measure this however heart rate can also be used. Power zones we will use are as followed using the Dr Andrew Coggan's Zones as outlined on [Trainingpeaks](https://www.trainingpeaks.com/blog/power-training-levels/), one of the largest coach to athlete training platforms used by most professionals. Each of the following is expressed as a % of the riders FTP (Functional Threshold Power) more on that later.
+
+```
+       Z1 < 55%
+56%  < Z2 < 75%
+76%  < Z3 < 90%
+91%  < Z4 < 105%
+106% < Z5 < 120%
+121% < Z6
+       Z7   Max
+```
+
+In general though to quantify Z7 we will take Z6 < 200% and Z7 to be anything above that.
+
+```
+       Z1 < 55%
+56%  < Z2 < 75%
+76%  < Z3 < 90%
+91%  < Z4 < 105%
+106% < Z5 < 120%
+121% < Z6 < 200%
+201% < Z7   
+```
+
+Realistically speaking most efforts that are Z6/Z7 can be quantified as a joint zone.
+
+#### FTP
+
+What is FTP? Well it is the metric of how much power can be sustained for 1 hr. However due to max 1 hr efforts being difficult to conduct (take out to much energy out of the rider with comparitively little additional training benefit), we will focus on eFTP or estimate functional threshold power. We will use the power curver calculator provided by [FastFitness.Tips](https://www.cyclingapps.net/calculators/curve/), to measure our current eFTP to see how to improve performance, however we will add regular testing (Once every 2-3 months or so to provide more accurate estimates).
+
+#### MAP
+
+MAP is maximum aerobic power, the most amount of power we can produce while using oxygen to produce energy. However more generally for an easier calculation it is the most amount of power we can sustain for 5 minutes.
+
+#### AC
+
+Anaerobic capacity, is made up of 2 parts, anaerobic power which is the maximum amount of power able to produce anaerboically (generally speaking for efforts longer than 10 seconds) and anaerboic stamina how long can you sustain an effort for anaerboically ([Read more detail at High North](https://www.highnorth.co.uk/articles/anaerobic-training-cycling/)). If we represent these two metric on a graph we will gain a curve of which is visual representation of the anaerboic capacity. This curve forms part of a larger curve known as critical power curve. (More on that later).
+
+#### NM
+
+NM or Neuromusular Power is basically the maximum power your body can produce.
+
+#### CP
+
+Critical power is the point on a critical power graph where your body should theoretically hold this power indefinately. Unfortunately, in practice it is around the point for which your body can sustain the effort for 30 minutes. Ultimately, critical power can be described as being made up of two things (W' and CP itself). W' is the amount of work or energy that can be done above your critical power and we already know what CP is. This gives us a much better all round metric for one person rather than just the metrics above. However, we can also use the metrics above along with critical power to see if there are any weaknesses in the rider.
+
+#### TSS
+
+Training stress score is a number assigned to each ride created by trainingpeaks based upon how hard the ride was using power and your ftp as the 2 metrics.
+
+##### CTL
+
+Chronic Training Load is the measure of your general fitness also created by [Trainingpeaks](https://www.trainingpeaks.com/coach-blog/a-coachs-guide-to-atl-ctl-tsb/). It is the 42 day average of all your daily TSS.
+
+##### ATL
+
+Acute Training Load is the measure of your fatigue also created by [Trainingpeaks](https://www.trainingpeaks.com/coach-blog/a-coachs-guide-to-atl-ctl-tsb/). It is the 7 day average of all your daily TSS.
+
+##### TSB
+
+Training Stress Balance is your form metric also created by [Trainingpeaks](https://www.trainingpeaks.com/coach-blog/a-coachs-guide-to-atl-ctl-tsb/). And is your CTL - ATL. If your TSB is between around +15 and +25 you are in peak form, and ideally for a training block you want to sit between -10 and -30 depending on your fitness. But generally speaking you do not want to drop below -30 as you are at serve risk of illness.
+
+#### Power to Weight
+
+It is as simple as it sounds it is the ratio of power to the weight measured in W/kg. Generally speaking this is the most important metric for climbing rather than raw power.
+
+These are more generally the basic metrics and terms being used for our training. We will now introduce some important conciderations for our alogrithm.
+
+#### Fatigue
+
+Firstly, how fatigued is a rider after a session and what is needed to recover. We will generally split this into 2 main categories intervals, and base. Interval sessions are one where structured efforts are done. Base is where the rider just rides steady usually in Zone 1/2.
+
+##### Base
+
+Base fatigue can be measure through those metrics by training peaks mainly (TSB). This will allow us to have a very easy understanding of the level of fatigue.
+
+##### Intervals
+
+Intervals is a bit more tricky to calculate. Scientist have found that at least one day is required between intervals, and two might be necessary for some people after some interval sessions. To figure out the number of rest days required we will measure the compliance with the workout (how close they were to the designated power numbers in the intervals) to decided if one or two days is needed. (95%+ 1, 80%+ 2, anything less will change the current week to a rest week.)
+
+##### Block length planning
+
+Generally, 3 hard weeks to 1 easy week block will be used (3:1 rule) as it allows time for the body to recover while training. As much as this isn't so important anymore, it allows for the rider to get good mental and physical rest.
+
+#### What training to do?
+
+We will decide what training to do based upon our fatigue for intervals and base. Using this and the persons schedule we will be able to have a good idea on whether the rider should be doing a base or intervals session. Additionally during the easy week we will do no interval sessions. We will also have 1 rest day a week for a similar reason to why we have a 3:1 rule.
+
+#### What intervals to do?
+
+We will use a base, polarized and potentially HIT way of scheduling our training. Base is where we spend all our time at Z1/Z2. It is ideal for beginners, what we are going to use it for. Polarized is where we spend 70% at Z1/2, 10% at Z3/4, 20% at Z5+. This is idedal for most people who already have fitness and want to work on becoming strong across all power ranges. As much as HIT (50% at Z1/2, 10% at Z3/4, 40% at Z5+) does have the potential to be more beneficial than Polarized the risk of burn out is too great for anyone to consistently train at it for a long time, however, it might be worth integrating just before a rest week, for someone on a lower time schedule or we can go inbetween a polarized and hiit. Since this is just the research and the algorithm isn't set in stone this might be updated later.
+
+#### Race Warm Ups
+
+As much as this isn't super relevant to training it is quite relevant for the events we are training for. A lot of people will think that you need to do a long hard warm up, but a short (10-15 mins) easy (at 60% of ftp) will be just as effective as a super long or hard or both warm up. But noteably that personal prefence can also play a role in the mental side of the warm up. [FastFitness.Tips](https://www.cyclingapps.net/blog/how-did-we-get-warm-ups-so-wrong/)
+
+#### Nutrition
+
+Disclamer *This comes from many experts I have talked to in the past. Unfortunately I do not remember the names of most of them and am unsure who said what. For the purpose of this I will try to find the appropriate research to back it up otherwise it is all of memory.*
+
+Many programs will suggest eating around 120+gs of carbs an hr during something like an ironman. Unfortunately this is both really hard to do and in theory impossible. In general there is 2 types of carbs fructose and glucose. We can generally only digest 60gs of carbs an hr of each type, however this takes a lot of training to get there. More over for a normal person, a more realistic amount for an untrained stomach is around 30gs combined an hr. Now not only this the amount of carbs to be digested an hr is also ditacted from the intensity. At a lower intensity only really 30gs of combined carbs an hr is really needed. At medium intensity it will be around 60gs of carbs (I'll stop saying combined carbs but if I say carbs I mean both types.) an hr. And at high intensities it will be around 90gs + an hr. It is also dictated on the length of your session as well. But moreover we will use the following chart as a good guide.
+
+![](https://cdn-images-1.medium.com/max/800/0*lhbjE5rn2kugVU7V.jpg)
+
+https://www.precisionhydration.com/
+
+All the nutrition research seems to line up from the guys at [FastFitness.Tips](https://www.cyclingapps.net/blog/8-worst-race-day-nutrition-errors/) They have got a lot of good information as it seems to line up with experts I have talked to on all kinds of training information and therefore been used for most of my extra research and is almost all backed by research papers.
+
+#### Strength Training
+
+Unfortunately, I do not have enough experience in this realm to provide such detailed information on it. However, from research it seems that strength training can improve performance by around 5% for cyclist, but you only really need to do around 60 minutes a week to achieve this, and anything above 140 minutes or just over 2 hrs seems to do more damage than it benefits the body. [FastFitness.Tips](https://www.cyclingapps.net/blog/dont-do-more-than-3hrs-per-week-in-the-gym/) Unfortunately this study was quite small with just under 100 cyclist involved.  But there is also other benefits to strength training than just raw performance. It also a well known fact that it can improve efficency on the bike and help riders hold a better aero position so it might be worth doing.
+
+### The Algorithm
+
+1. We will need to calculate our easy and our hard weeks. This will be done by using events and working back from there or just continue using the 3:1 rule.
+2. Next we will start of with the next unplanned day and calculate our new levels of fitness and fatigue.
+3. We will then use these to calculate what we should focus on.
+4. Once we have figured out what to focus our ride on, we will move onto picking the "best fit" for a workout so we don't over fatigue the rider until the end of the hard block.
+5. We will then repeat this until we have finished our scheduled training part.
