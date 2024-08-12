@@ -100,6 +100,74 @@ We will decide what training to do based upon our fatigue for intervals and base
 
 We will use a base, polarized and potentially HIT way of scheduling our training. Base is where we spend all our time at Z1/Z2. It is ideal for beginners, what we are going to use it for. Polarized is where we spend 70% at Z1/2, 10% at Z3/4, 20% at Z5+. This is idedal for most people who already have fitness and want to work on becoming strong across all power ranges. As much as HIT (50% at Z1/2, 10% at Z3/4, 40% at Z5+) does have the potential to be more beneficial than Polarized the risk of burn out is too great for anyone to consistently train at it for a long time, however, it might be worth integrating just before a rest week, for someone on a lower time schedule or we can go inbetween a polarized and hiit. Since this is just the research and the algorithm isn't set in stone this might be updated later.
 
+This works out at around 3/4 Rest, Recovery or Base days, 1 Threshold day, and 2 Vo2 Max or AC or NM days.
+
+Since we have different types of riders, and we use different powers, as much as the ratios don't really change, the sessions in Z3/4 and Z5/6 change, for the following 5 main riders:
+
+##### Climber - Anywhere from 1 minute -> Around An Hr
+
+Z3/4 Efforts:
+
+* Spend little time in Z3 maybe once a 4 week block tops.
+* Spend most the time in Z4.
+
+Z4/5 Efforts:
+
+* Spend a lot of time in Z5 once or twice a week.
+* Spend a bit of time in Z6, every other week, but co-ordinate it so there is 2 lots of Z6 in each block.
+* No structured time in Z7, maybe add the odd sprint session for some sharpening up into a group ride but nothing set in stone.
+
+##### TT Specialist - Anywhere from 10 minutes -> 2 Hrs
+
+Z3/4 Efforts:
+
+* Spend a bit of time in Z3 at least one session in a 4 week block.
+* Spends most the time in Z4.
+
+Z4/5 Efforts:
+
+* Spend a lot of time in Z5 once or twice a week.
+* Spend a little time in Z6, at most one session a block.
+* No time in Z7.
+
+##### All Rounder -> Everything a bit of sprinting, TTs, Long distance rides and Climbs.
+
+Z3/4 Efforts:
+
+* Spend half the time in Z3.
+* Spend half the time in Z4.
+
+Z4/5 Efforts:
+
+* Spend half of the time in Z5, once a week.
+* Spend alternating weeks in Z6, every other week. Aim for twice a block.
+* Spend alternating weeks in Z7, every other week. Aim for once a block + the odd town sign sprint on group rides.
+
+##### Sprinter - Aiming for efforts between 20 seconds -> 1 minute
+
+Z3/4 Efforts:
+
+* Spend half the time in Z3.
+* Spend half the time in Z4.
+
+Z4/5 Efforts:
+
+* Spend alternating weeks in Z5, every other week. Aim for once a block.
+* Spend alternating weeks in Z6, every other week. Aim for twice a block.
+* Spend half the time in Z7, once a week.
+
+##### Introduction - Long distance rides
+
+This is the only one where we are going to reduce all efforts to just starting with base miles. This could also be useful for someone just wanting to ride their bike, but I wouldn't structure their training with this program.
+
+#### Total Hours
+
+Now for many people a big question would be well how many hours do I need to pack all this training in? For the average person 6-9hrs is plenty to see the benefit. With only really 10-12 hrs being needed by those racing. As well as this most people racing can get by on 6-9hrs of training with ramping the training up to 10-12hrs for a block just outside the race season. Only really pros need to and have the physical capability to train more than 12hr weeks consistently.[Trainright](https://https://trainright.com/how-many-hours-should-cyclists-ride-fitness-performance-training/)
+
+#### Periodisation
+
+Now periodisation is where at the start of the year we plan out what "blocks" or "phases" we are going to go through in the year. Instead since we are using a 3:1 rule for hard to easy weeks, we are going to use an increase in amount of Z3/4 and Z5/6 efforts and a decrease in base slightly across the year to the point where the rider wants to peak, from a 80/5/15 -> 70/7.5/22.5. We feel that this might not be quite the perfect peak but would lead very very close to it. We can then ramp it down slowly until the end of the race season where we start the ramp up for next season again.
+
 #### Race Warm Ups
 
 As much as this isn't super relevant to training it is quite relevant for the events we are training for. A lot of people will think that you need to do a long hard warm up, but a short (10-15 mins) easy (at 60% of ftp) will be just as effective as a super long or hard or both warm up. But noteably that personal prefence can also play a role in the mental side of the warm up. [FastFitness.Tips](https://www.cyclingapps.net/blog/how-did-we-get-warm-ups-so-wrong/)
@@ -120,10 +188,13 @@ All the nutrition research seems to line up from the guys at [FastFitness.Tips](
 
 Unfortunately, I do not have enough experience in this realm to provide such detailed information on it. However, from research it seems that strength training can improve performance by around 5% for cyclist, but you only really need to do around 60 minutes a week to achieve this, and anything above 140 minutes or just over 2 hrs seems to do more damage than it benefits the body. [FastFitness.Tips](https://www.cyclingapps.net/blog/dont-do-more-than-3hrs-per-week-in-the-gym/) Unfortunately this study was quite small with just under 100 cyclist involved.  But there is also other benefits to strength training than just raw performance. It also a well known fact that it can improve efficency on the bike and help riders hold a better aero position so it might be worth doing.
 
-### The Algorithm
+### How is all this research going to help us. 
 
-1. We will need to calculate our easy and our hard weeks. This will be done by using events and working back from there or just continue using the 3:1 rule.
-2. Next we will start of with the next unplanned day and calculate our new levels of fitness and fatigue.
-3. We will then use these to calculate what we should focus on.
-4. Once we have figured out what to focus our ride on, we will move onto picking the "best fit" for a workout so we don't over fatigue the rider until the end of the hard block.
-5. We will then repeat this until we have finished our scheduled training part.
+1. Start by establishing a goal race, if there isn't we will not use periodisation and just stick to the 70/10/20 ratio all year around. And we will ask what type of rider they want to be - Sprinter, Climber, TT Specialist, All-Rounder, or New. And how many hrs, 3-5, 6/7, 8/9, 10-12
+2. We then store this and use it to calculate what week the upcoming week is.
+3. We then ask the rider for the schedule for the week (How many days/hours he can train?) Making sure there isn't too many restdays for amount of time, i.e. 10-12hrs can only have 1 rest day.
+4. We then calculate the ratios for sessions using the information above and assign each day for the upcoming week. We can start on any day of the week, but recommend Monday for simplicity. And we can generate multiple weeks but never half weeks.
+5. We then query each days focus and hours against our workout database and use that to pick our workouts.
+6. Then repeat.
+
+   At the moment this is just for cycling with no strength training. We recommend doing at least  one full body gym session a week in addition to this training with a focus on Core and Legs. But making sure to hit every muscle in the body. Make sure to keep fueled well through rides and to fuel properly before them. If you have a power meter, it will provide accurate calorie readings if you would like to structure to lose weight, or gain weight depending on the type of rider. These features will come later at some point.
