@@ -198,12 +198,13 @@ Unfortunately, I do not have enough experience in this realm to provide such det
 
 #### Cycle only
 
-1. Start by establishing a goal race, if there isn't we will not use periodisation and just stick to the 70/10/20 ratio all year around. And we will ask what type of rider they want to be - Sprinter, Climber, TT Specialist, All-Rounder, or New. And how many hrs, 3-5, 6/7, 8/9, 10-12
-2. We then store this and use it to calculate what week the upcoming week is.
-3. We then calculate the ratios for sessions using the information above and assign each day for the upcoming week.
-4. We then query each days focus and hours against our workout database and use that to pick our workouts.
-5. We then add strength training on easy and or rest days.
-6. Then repeat.
+1. Start by establishing a goal race, if there isn't we will not use periodisation and just stick to the 70/10/20 ratio all year around. And we will ask what type of rider they want to be - Sprinter, Climber, TT Specialist, All-Rounder, or New. And how many hrs, 6/7, 8/9, 10-12, 12+.
+2. After this we ask tailored questions about your schedule for deciding upon long ride sessions, short sessions, strength and mobility sessions.
+3. After this we then calculate which days are intense days based on planning session to be 70/10/20 across a 4 week period with one of the weeks being a recovery week with no efforts.
+4. We then use the ratios outlined above for what type of efforts are in each of the days with them.
+5. We then take away the time for long rides to calculate an average hours required for the rest of the session. This may need to be calculated before the schedule is allowed to pass.
+6. We also ask which days strength sessions can be on, with rest or recovery days trying to give the legs a rest for strength days so ideally on days of intervals with maybe one upper body conditioning on a rest or recovery day.
+7. Then we query the database through the week to find out each session.
 
 #### Run Only
 
