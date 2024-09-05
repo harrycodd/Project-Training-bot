@@ -1,5 +1,5 @@
 
-# Conversition dictionary to polarised/hit workout distributions based upon hours riding
+# Conversition dictionary to polarised/hit workout distributions based upon hours training
 # x hours : [lt3, lt2, lt1]
 hours_to_ltr_conversion = {
     7: [0.25,0.1,0.65],
@@ -9,11 +9,62 @@ hours_to_ltr_conversion = {
     1: [0.6,0.2,0.2]
 }
 
-# Convers
+# Convertion dictionary to rest days based upon hours training
 hours_to_rest = {
+    10 : 1,
+    7 : 2,
+    5 : 3,
+    3 : 4,
+    2 : 5,
+    1 : 6
+}
 
+# Hr Zones
+hr_zones = {
+    0 : 0,
+    1 : 80,
+    2 : 89,
+    3 : 93,
+    4 : 99,
+    5 : 102,
+    6 : 105,
+    7 : 200
+}
+
+pr_zones = {
+    0 : 0,
+    1 : 55,
+    2 : 75,
+    3 : 90,
+    4 : 105,
+    5 : 120,
+    6 : 150,
+    7 : 10000
+}
+
+# Additional zones for easier and better analysis
+# Sweet spot - Long threshold efforts
+# Endurance - Ideal power for top end of LT1  
+#   - This varies but it is the power you can hold just at the limit of breathing through your nose.
+ideal_zones_pr_zones = {
+    "ss" : [84, 97],
+    "endurance" : [60, 70]
 }
 
 class user_data:
     def __init__():
-        self
+        self.ideal_hours = 18
+        self.current_fitness = 50
+        self.current_ftp_power = 200
+        self.current_ftp_hr = 200
+    
+    def estimate_current_fitness(self):
+        # Compare to this:
+        # Completly new = 0
+        # Occasional ride = 20
+        # Regular training hrs * 50/7 rounded to the nearest 5
+        pass
+
+    def estimate_current_ftp_hr(self):
+        # (220 - age) * 0.9 - to workout estimated ftp
+        pass
