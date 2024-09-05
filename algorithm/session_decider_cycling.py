@@ -46,13 +46,17 @@ pr_zones = {
 # Sweet spot - Long threshold efforts
 # Endurance - Ideal power for top end of LT1  
 #   - This varies but it is the power you can hold just at the limit of breathing through your nose.
+# Recovery - Ideal power for active recovery
+# "ADDITIONIAL ZONE" : [lowerpr, upperpr]
 ideal_zones_pr_zones = {
     "ss" : [84, 97],
-    "endurance" : [55, 75]
+    "endurance" : [55, 75],
+    "recovery" : [0, 50]
 }
 
 class user_data:
-    def __init__():
+    def __init__(self, ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr):
+        # Set current levels 
         self.ideal_hours = 18
         self.current_fitness = 50
         self.current_fatigue = 50
