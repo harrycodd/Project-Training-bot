@@ -48,7 +48,7 @@ pr_zones = {
 #   - This varies but it is the power you can hold just at the limit of breathing through your nose.
 ideal_zones_pr_zones = {
     "ss" : [84, 97],
-    "endurance" : [60, 70]
+    "endurance" : [55, 75]
 }
 
 class user_data:
