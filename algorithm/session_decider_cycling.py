@@ -55,8 +55,11 @@ class user_data:
     def __init__():
         self.ideal_hours = 18
         self.current_fitness = 50
+        self.current_fatigue = 50
         self.current_ftp_power = 200
         self.current_ftp_hr = 200
+
+        self.current_tsb = self.current_fitness - self.current_fatigue
     
     def estimate_current_fitness(self):
         # Compare to this:
@@ -67,4 +70,8 @@ class user_data:
 
     def estimate_current_ftp_hr(self):
         # (220 - age) * 0.9 - to workout estimated ftp
+        pass
+
+    def estimate_current_fatigue(self):
+        # Same as current fitness
         pass
