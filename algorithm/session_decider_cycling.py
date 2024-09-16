@@ -19,7 +19,6 @@ hours_to_rest = {
     1 : 6
 }
 
-# Hr Zones
 hr_zones = {
     0 : 0,
     1 : 80,
