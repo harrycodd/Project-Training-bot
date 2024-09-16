@@ -53,36 +53,31 @@ ideal_zones_pr_zones = {
     "recovery" : [0, 50]
 }
 
-class user_data:
+class user_week_predictor:
     def __init__(self, ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type):
         # Set current levels 
-        self.ideal_hours = 18
-        if current_fitness == -1:
-            self.estimate_current_fitness()
-
-        else:
-            self.current_fitness = current_fitness
-
-        self.current_fatigue = 50
-        self.current_ftp_power = 200
-        self.current_ftp_hr = 200
-        self.current_week_type = [90, 10, 0]
+        self.ideal_hours = ideal_hours
+        self.current_fitness = current_fitness
+        self.current_fatigue = current_fatigue
+        self.current_ftp_power = current_ftp_power
+        self.current_ftp_hr = current_ftp_hr
+        self.current_week_type = current_week_type
 
         self.current_tsb = self.current_fitness - self.current_fatigue
         
     
-    def estimate_current_fitness(self):
-        input("Current Fitness \n 0: Completely new \n 2: Occassional weekly rides")
-        # Compare to this:
-        # Completly new = 0
-        # Occasional ride = 20
-        # Regular training hrs * 50/7 rounded to the nearest 5
-        pass
 
-    def estimate_current_ftp_hr(self):
-        # (220 - age) * 0.9 - to workout estimated ftp
-        pass
+user = user_data
 
-    def estimate_current_fatigue(self):
-        # Same as current fitness
-        pass
+def estimate_current_fitness(hours_weekly):
+    return (hours_weekly * 50) / 7 < 20
+
+def estimate_current_ftp_hr(age):
+    # (220 - age) * 0.9 - to workout estimated ftp
+    pass
+
+def estimate_current_fatigue():
+    # Same as current fitness
+    pass
+
+self.estimate_current_fitness(hours_weekly)
