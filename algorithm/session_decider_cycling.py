@@ -93,7 +93,24 @@ class user_cycling_predictor:
         if self.ideal_weekly_tss_build > self.max_weekly_tss:
             self.ideal_weekly_tss_build = self.max_weekly_tss
 
-        baseline_predicition = [0,0,0,0,0,0,0]
+        baseline_predicition = [-1,-1,-1,-1,-1,-1,-1]
+        days_to_train = [0,3,3,3,1,2,2]
+        for i in days_to_train:
+            if i == 0:
+                rest_day_count += 1
+
+        if rest_day_count == self.ideal_rest_days + 1:
+            position = 0
+            for i in days_to_train:
+                if i == 0:
+                    baseline_predicition[position]
+                position += 1
+
+        elif rest_day_count < self.ideal_rest_days:
+            pass
+        elif rest_day_count > self.ideal_rest_days:
+            pass
+        
 
 
 
