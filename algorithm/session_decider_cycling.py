@@ -71,13 +71,20 @@ class user_cycling_predictor:
 
         self.current_tsb = self.current_fitness - self.current_fatigue
         
+
+    
     def make_next_day_prediction(self):
         # Establish our maximum possible training level and therefore out maximum tss per week
         self.max_ctl = round(float(50 * self.ideal_hours) / 7)
         self.max_weekly_tss = round(self.max_ctl * 7)
 
-        
-        self.ideal_rest_days = hours_to_rest
+        # Converts ideal week hours in to number of rest days
+        prev_i = 99
+        for i in hours_to_rest:
+            if x >= i and prev_i > x:
+                self.ideal_rest_days = hours_to_rest[i]
+                break
+            prev_i = i
 
         # Based upon current ftp + fitness we can calculate a good estimate of the tss build for the week
         self.ideal_weekly_tss_build = ((1 - 0.00184333 + (0.0000277333 * self.current_ftp_power))^7 * self.current_fitness)
