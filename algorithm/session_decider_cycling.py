@@ -54,13 +54,14 @@ ideal_zones_pr_zones = {
 }
 
 class user_cycling_predictor:
-    def __init__(self, ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type, prev_day_type=0, days_since_rest=0, day_in_week=0, current_lt1_days=0, current_lt2_days=0, current_lt3_days=0):
+    def __init__(self, ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type, avaliable_days, prev_day_type=0, days_since_rest=0, day_in_week=0, current_lt1_days=0, current_lt2_days=0, current_lt3_days=0):
         self.ideal_hours = ideal_hours
         self.current_fitness = current_fitness
         self.current_fatigue = current_fatigue
         self.current_ftp_power = current_ftp_power
         self.current_ftp_hr = current_ftp_hr
         self.current_week_type = current_week_type
+        self.avaliable_days = avaliable_days
         self.prev_day_type = prev_day_type
         self.days_since_rest = days_since_rest
         self.day_in_week = day_in_week
@@ -69,12 +70,20 @@ class user_cycling_predictor:
         self.current_lt3_days = current_lt3_days
 
         self.current_tsb = self.current_fitness - self.current_fatigue
-
-        self.max_ctl = float(50 * self.ideal_hours) / 7
         
     def make_next_day_prediction(self):
+        # Establish our maximum possible training level and therefore out maximum tss per week
+        self.max_ctl = round(float(50 * self.ideal_hours) / 7)
+        self.max_weekly_tss = round(self.max_ctl * 7)
 
-        pass
+        # Based upon current ftp + fitness we can calculate a good estimate of the tss build for the week
+        self.ideal_weekly_tss_build = ((1 - 0.00184333 + (0.0000277333 * self.current_ftp_power))^7 * self.current_fitness)
+
+        # Our maximum tss is derived from number of hours. If we are at our maximum hours we cannot train anymore
+        if self.ideal_weekly_tss_build > self.max_weekly_tss:
+            self.ideal_weekly_tss_build = self.max_weekly_tss
+
+        
     
 
 
