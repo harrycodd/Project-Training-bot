@@ -53,31 +53,63 @@ ideal_zones_pr_zones = {
     "recovery" : [0, 50]
 }
 
-class user_week_predictor:
-    def __init__(self, ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type):
-        # Set current levels 
+class user_cycling_predictor:
+    def __init__(self, ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type, prev_day_type=0, days_since_rest=0, day_in_week=0, current_lt1_days=0, current_lt2_days=0, current_lt3_days=0):
         self.ideal_hours = ideal_hours
         self.current_fitness = current_fitness
         self.current_fatigue = current_fatigue
         self.current_ftp_power = current_ftp_power
         self.current_ftp_hr = current_ftp_hr
         self.current_week_type = current_week_type
+        self.prev_day_type = prev_day_type
+        self.days_since_rest = days_since_rest
+        self.day_in_week = day_in_week
+        self.current_lt1_days = current_lt1_days
+        self.current_lt2_days = current_lt2_days
+        self.current_lt3_days = current_lt3_days
 
         self.current_tsb = self.current_fitness - self.current_fatigue
         
+    def make_next_day_prediction(self):
+        pass
     
 
-user = user_data
 
 def estimate_current_fitness(hours_weekly):
     return (hours_weekly * 50) / 7 < 20
 
 def estimate_current_ftp_hr(age):
-    # (220 - age) * 0.9 - to workout estimated ftp
-    pass
+    return (220 - age) * 0.9
 
-def estimate_current_fatigue():
-    # Same as current fitness
-    pass
+def estimate_current_fatigue(current_fitness):
+    return 
 
-self.estimate_current_fitness(hours_weekly)
+while True:
+    new_rider = input("Are you completely new to any sort of fitness? y/n")
+    if new_rider == "y":
+        while True:
+            ideal_hours_inputted = input("What is you ideal hours?")
+            try:
+                ideal_hours_rounded = float(round(float(ideal_hours) * 2)) / 2
+                if ideal_hours_rounded <= 24 and ideal_hours_rounded >= 3:
+                    ideal_hours = ideal_hours_rounded
+                    current_fitness = 0
+                    current_fatigue = 0
+
+                    weight = input("Weight in kg?")
+                    current_ftp_power = round(2 * weight)
+
+                    age = input("Age?")
+                    current_ftp_hr = round((220 - age) * 0.9)
+                    break
+            except:
+                pass
+            print("Invalid input")
+        break
+
+    elif new_rider == "n":
+        break
+
+    print("Invalid input")
+
+user = user_cycling_predictor(ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type)
