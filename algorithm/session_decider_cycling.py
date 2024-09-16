@@ -54,17 +54,25 @@ ideal_zones_pr_zones = {
 }
 
 class user_data:
-    def __init__(self, ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr):
+    def __init__(self, ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type):
         # Set current levels 
         self.ideal_hours = 18
-        self.current_fitness = 50
+        if current_fitness == -1:
+            self.estimate_current_fitness()
+
+        else:
+            self.current_fitness = current_fitness
+
         self.current_fatigue = 50
         self.current_ftp_power = 200
         self.current_ftp_hr = 200
+        self.current_week_type = [90, 10, 0]
 
         self.current_tsb = self.current_fitness - self.current_fatigue
+        
     
     def estimate_current_fitness(self):
+        input("Current Fitness \n 0: Completely new \n 2: Occassional weekly rides")
         # Compare to this:
         # Completly new = 0
         # Occasional ride = 20
