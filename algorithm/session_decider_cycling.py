@@ -69,8 +69,11 @@ class user_cycling_predictor:
         self.current_lt3_days = current_lt3_days
 
         self.current_tsb = self.current_fitness - self.current_fatigue
+
+        self.max_ctl = float(50 * self.ideal_hours) / 7
         
     def make_next_day_prediction(self):
+
         pass
     
 
