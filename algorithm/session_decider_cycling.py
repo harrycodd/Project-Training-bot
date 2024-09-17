@@ -80,14 +80,6 @@ class user_cycling_predictor:
         self.max_ctl = round(float(50 * self.ideal_hours) / 7)
         self.max_weekly_tss = round(self.max_ctl * 7)
 
-        # Converts ideal week hours in to number of rest days
-        prev_i = 99
-        for i in hours_to_rest:
-            if self.ideal_hours >= i and prev_i > self.ideal_hours:
-                self.ideal_rest_days = hours_to_rest[i]
-                break
-            prev_i = i
-
         # Based upon current ftp + fitness we can calculate a good estimate of the tss build for the week
         self.ideal_weekly_tss_build = ((1 - 0.00184333 + (0.0000277333 * self.current_ftp_power))**7 * self.current_fitness) * 7
 
@@ -97,6 +89,14 @@ class user_cycling_predictor:
 
         # Works out the number of hours based upon this weeks tss
         self.this_weeks_hours = float(round(self.ideal_weekly_tss_build / 25)) / 2
+
+        # Converts this weeks hours in to number of rest days
+        prev_i = 99
+        for i in hours_to_rest:
+            if self.this_weeks_hours >= i and prev_i > self.this_weeks_hours:
+                self.ideal_rest_days = hours_to_rest[i]
+                break
+            prev_i = i
 
         # Creates a 0 prediction for basing it off
         baseline_hours = [-1,-1,-1,-1,-1,-1,-1]
@@ -182,6 +182,43 @@ class user_cycling_predictor:
                         baseline_focus[i + 1] = 1
                         self.total_lt_days[2] -= 1
 
+            elif baseline_focus[i] > 1:
+                if baseline_hours[i + 1] == -1:
+                    if self.total_lt_days[0] > 0:
+                        if current_no_interval_days == 0:
+                            baseline_hours[i + 1] = interval_day_one_hours
+                        elif current_no_interval_days == 1:
+                            baseline_hours[i + 1] = interval_day_two_hours
+                        else:
+                            baseline_hours[i + 1] = interval_day_three_hours
+                        current_no_interval_days += 1
+                        baseline_focus[i + 1] = 3
+                        self.total_lt_days[0] -= 1
+
+                    elif self.total_lt_days[1] > 0:
+                        if current_no_interval_days == 0:
+                            baseline_hours[i + 1] = interval_day_one_hours
+                        elif current_no_interval_days == 1:
+                            baseline_hours[i + 1] = interval_day_two_hours
+                        else:
+                            baseline_hours[i + 1] = interval_day_three_hours
+                        current_no_interval_days += 1
+                        baseline_focus[i + 1] = 2
+                        self.total_lt_days[1] -= 1
+                    
+                    elif self.total_lt_days[2] > 0:
+                        if current_no_endurance_days == 0:
+                            baseline_hours[i + 1] = endurance_day_one_hours
+                        elif current_no_endurance_days == 1:
+                            baseline_hours[i + 1] = endurance_day_two_hours
+                        elif current_no_endurance_days == 2:
+                            baseline_hours[i + 1] = recovery_day_hours
+                        else:
+                            baseline_hours[i + 1] = interval_day_three_hours
+                        current_no_endurance_days += 1
+                        baseline_focus[i + 1] = 1
+                        self.total_lt_days[2] -= 1
+
             elif baseline_hours[i] == -1:
                 if self.total_lt_days[2] > 0:
                     if current_no_endurance_days == 0:
@@ -195,6 +232,8 @@ class user_cycling_predictor:
                     current_no_endurance_days += 1
                     baseline_focus[i] = 1
                     self.total_lt_days[2] -= 1
+
+
 
         print(baseline_focus, baseline_hours, self.total_lt_days, self.this_weeks_hours)
         print(endurance_day_one_hours, endurance_day_two_hours, interval_day_one_hours, interval_day_two_hours, interval_day_three_hours, recovery_day_hours)
