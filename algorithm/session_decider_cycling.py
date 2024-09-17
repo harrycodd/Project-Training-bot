@@ -99,17 +99,20 @@ class user_cycling_predictor:
             if i == 0:
                 rest_day_count += 1
 
-        if rest_day_count == self.ideal_rest_days + 1:
+        if rest_day_count > self.ideal_rest_days + 1:
+            pass
+
+        else:
             position = 0
             for i in days_to_train:
                 if i == 0:
                     baseline_predicition[position]
                 position += 1
+            if rest_day_count == self.ideal_rest_days + 1:
+                pass
+            elif rest_day_count < self.ideal_rest_days:
+                pass
 
-        elif rest_day_count < self.ideal_rest_days:
-            pass
-        elif rest_day_count > self.ideal_rest_days:
-            pass
         
 
 
