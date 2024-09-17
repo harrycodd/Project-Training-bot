@@ -93,6 +93,8 @@ class user_cycling_predictor:
         if self.ideal_weekly_tss_build > self.max_weekly_tss:
             self.ideal_weekly_tss_build = self.max_weekly_tss
 
+        self.this_weeks_hours = float(round(self.ideal_weekly_tss_build / 25)) / 2
+
         baseline_predicition = [-1,-1,-1,-1,-1,-1,-1]
         days_to_train = [0,3,3,3,1,2,2]
 
@@ -102,7 +104,13 @@ class user_cycling_predictor:
                 baseline_predicition[position]
             position += 1
 
-        day_schedule = [0.18*self.ideal_hours + 1, 0.23*self.ideal_hours, 0.18*self.ideal_hours]
+
+        interval_day_one_hours = 0.23 * self.this_weeks_hours
+        interval_day_two_hours = 0.23 * self.this_weeks_hours
+        endurance_or_interval_hours = 0.23 * self.this_weeks_hours
+        recovery_day_hours = 0.23 * self.this_weeks_hours
+        endurance_day_one_hours = 0.18 * self.this_weeks_hours + 1
+        endurance_day_two_hours = 0.18 * self.this_weeks_hours + 0.25
 
 
 def estimate_current_fitness(hours_weekly):
