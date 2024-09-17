@@ -145,7 +145,7 @@ class user_cycling_predictor:
         current_no_endurance_days = 0
 
         for i in range(len(baseline_hours)):
-            if baseline_hours[i] == 0:
+            if baseline_focus[i] > 1:
                 if baseline_hours[i + 1] == -1:
                     if self.total_lt_days[0] > 0:
                         if current_no_interval_days == 0:
@@ -182,7 +182,8 @@ class user_cycling_predictor:
                         baseline_focus[i + 1] = 1
                         self.total_lt_days[2] -= 1
 
-            elif baseline_focus[i] > 1:
+
+            elif baseline_hours[i] == 0:
                 if baseline_hours[i + 1] == -1:
                     if self.total_lt_days[0] > 0:
                         if current_no_interval_days == 0:
