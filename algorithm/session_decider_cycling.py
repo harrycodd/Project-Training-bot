@@ -158,7 +158,7 @@ class user_cycling_predictor:
                         baseline_focus[i + 1] = 3
                         self.total_lt_days[0] -= 1
 
-                    if self.total_lt_days[1] > 0:
+                    elif self.total_lt_days[1] > 0:
                         if current_no_interval_days == 0:
                             baseline_hours[i + 1] = interval_day_one_hours
                         elif current_no_interval_days == 1:
@@ -169,13 +169,15 @@ class user_cycling_predictor:
                         baseline_focus[i + 1] = 2
                         self.total_lt_days[1] -= 1
                     
-                    if self.total_lt_days[2] > 0:
+                    elif self.total_lt_days[2] > 0:
                         if current_no_endurance_days == 0:
                             baseline_hours[i + 1] = endurance_day_one_hours
                         elif current_no_endurance_days == 1:
                             baseline_hours[i + 1] = endurance_day_two_hours
-                        else:
+                        elif current_no_interval_days == 2:
                             baseline_hours[i + 1] = recovery_day_hours
+                        else:
+                            baseline_hours[i + 1] = interval_day_three_hours
                         current_no_endurance_days += 1
                         baseline_focus[i + 1] = 1
                         self.total_lt_days[2] -= 1
@@ -186,8 +188,11 @@ class user_cycling_predictor:
                         baseline_hours[i] = endurance_day_one_hours
                     elif current_no_endurance_days == 1:
                         baseline_hours[i] = endurance_day_two_hours
-                    else:
+                    elif current_no_interval_days == 2:
                         baseline_hours[i] = recovery_day_hours
+                    else:
+                        baseline_hours[i] = interval_day_three_hours
+                    print(current_no_endurance_days)
                     current_no_endurance_days += 1
                     baseline_focus[i] = 1
                     self.total_lt_days[2] -= 1
