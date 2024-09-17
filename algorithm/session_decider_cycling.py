@@ -93,10 +93,12 @@ class user_cycling_predictor:
         if self.ideal_weekly_tss_build > self.max_weekly_tss:
             self.ideal_weekly_tss_build = self.max_weekly_tss
 
+        # Works out the number of hours based upon this weeks tss
         self.this_weeks_hours = float(round(self.ideal_weekly_tss_build / 25)) / 2
 
+        # Creates a 0 prediction for basing it off
         baseline_predicition = [-1,-1,-1,-1,-1,-1,-1]
-        days_to_train = [0,3,3,3,1,2,2]
+        days_to_train = [0,3,3,3,1,2,2] # to be removed and passed in
 
         position = 0
         for i in days_to_train:
@@ -104,11 +106,22 @@ class user_cycling_predictor:
                 baseline_predicition[position]
             position += 1
 
+        if self.this_weeks_hours >= 6:
+            interval_day_two_hours = 0.13 * self.this_weeks_hours + 0.25
+        else:
+            interval_day_two_hours = 0
+
+        if self.this_weeks_hours >= 8:
+            recovery_day_hours = 0.05 * self.this_weeks_hours + 0.5
+        else:
+            recovery_day_hours = 0
+
+        if self.this_weeks_hours >= 10:
+            interval_day_three_hours = 0.16 * self.this_weeks_hours - 0.9
+        else:
+            interval_day_three_hours = 0
 
         interval_day_one_hours = 0.23 * self.this_weeks_hours
-        interval_day_two_hours = 0.23 * self.this_weeks_hours
-        endurance_or_interval_hours = 0.23 * self.this_weeks_hours
-        recovery_day_hours = 0.23 * self.this_weeks_hours
         endurance_day_one_hours = 0.18 * self.this_weeks_hours + 1
         endurance_day_two_hours = 0.18 * self.this_weeks_hours + 0.25
 
