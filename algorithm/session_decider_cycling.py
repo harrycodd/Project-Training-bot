@@ -105,27 +105,27 @@ class user_cycling_predictor:
         position = 0
         for i in self.avaliable_days:
             if i == 0:
-                baseline_hours[position]
+                baseline_hours[position] = 0
             position += 1
-
+        
         if self.this_weeks_hours >= 6:
-            interval_day_two_hours = 0.13 * self.this_weeks_hours + 0.25
+            interval_day_two_hours = float(round( (0.13 * self.this_weeks_hours + 0.25 )* 4)) /4
         else:
             interval_day_two_hours = 0
 
         if self.this_weeks_hours >= 8:
-            recovery_day_hours = 0.05 * self.this_weeks_hours + 0.5
+            recovery_day_hours = float(round( (0.05 * self.this_weeks_hours + 0.5 )* 4)) /4
         else:
             recovery_day_hours = 0
 
         if self.this_weeks_hours >= 10:
-            interval_day_three_hours = 0.16 * self.this_weeks_hours - 0.9
+            interval_day_three_hours = float(round( (0.16 * self.this_weeks_hours - 0.9 )* 4)) /4
         else:
             interval_day_three_hours = 0
 
-        interval_day_one_hours = 0.23 * self.this_weeks_hours
-        endurance_day_one_hours = 0.18 * self.this_weeks_hours + 1
-        endurance_day_two_hours = 0.18 * self.this_weeks_hours + 0.25
+        interval_day_one_hours = float(round( (0.23 * self.this_weeks_hours )* 4)) /4
+        endurance_day_one_hours = float(round( (0.18 * self.this_weeks_hours + 1 )* 4)) /4
+        endurance_day_two_hours = float(round( (0.18 * self.this_weeks_hours + 0.25 )* 4)) /4
 
         self.total_lt_days = []
 
