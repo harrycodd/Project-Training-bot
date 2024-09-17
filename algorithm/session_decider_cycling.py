@@ -1,4 +1,9 @@
+""" 
+NOTES
 
+In GUI, need to check that number of rest days selected is the right number
+
+"""
 # Conversition dictionary to polarised/hit workout distributions based upon hours training
 # x hours : [lt3, lt2, lt1]
 hours_to_ltr_conversion = {
@@ -103,11 +108,14 @@ class user_cycling_predictor:
         baseline_hours = [-1,-1,-1,-1,-1,-1,-1]
         baseline_focus = [-1,-1,-1,-1,-1,-1,-1]
 
+        scheduled_rest_days = 0
         position = 0
         for i in self.avaliable_days:
             if i == 0:
                 baseline_hours[position] = 0
+                scheduled_rest_days += 1
             position += 1
+
         
         if self.this_weeks_hours >= 6:
             interval_day_two_hours = float(round( (0.13 * self.this_weeks_hours + 0.25 )* 4)) /4
