@@ -149,7 +149,8 @@ class user_cycling_predictor:
         current_no_interval_days = 0
         current_no_endurance_days = 0
 
-        for i in range(len(baseline_hours)):
+        i = 0
+        while i < (len(baseline_hours)):
             if i < 6:
                 if baseline_focus[i] == 1:
                     if baseline_hours[i + 1] == -1:
@@ -254,7 +255,11 @@ class user_cycling_predictor:
                         current_no_endurance_days += 1
                         baseline_focus[i] = 1
                         self.total_lt_days[2] -= 1
-                        
+
+                        i -= 1
+
+
+
             elif baseline_hours[i] == -1:
                 if self.total_lt_days[2] > 0:
                     if current_no_endurance_days == 0:
@@ -268,6 +273,9 @@ class user_cycling_predictor:
                     current_no_endurance_days += 1
                     baseline_focus[i] = 1
                     self.total_lt_days[2] -= 1
+
+            i += 1
+
 
         for i in range(len(baseline_hours)):
             if baseline_focus[i] == -1:
@@ -324,4 +332,4 @@ while True:
 user = user_cycling_predictor(ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type, avaliable_days)
 """
 
-user = user_cycling_predictor(18, 100, 60, 330, 188, 1, [3,3,3,0,1,2,2] )
+user = user_cycling_predictor(18, 20, 60, 330, 188, 1, [3,3,3,0,1,2,2] )
