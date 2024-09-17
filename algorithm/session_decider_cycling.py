@@ -145,7 +145,7 @@ class user_cycling_predictor:
         current_no_endurance_days = 0
 
         for i in range(len(baseline_hours)):
-            if baseline_focus[i] > 1:
+            if baseline_focus[i] == 1:
                 if baseline_hours[i + 1] == -1:
                     if self.total_lt_days[0] > 0:
                         if current_no_interval_days == 0:
@@ -170,6 +170,21 @@ class user_cycling_predictor:
                         self.total_lt_days[1] -= 1
                     
                     elif self.total_lt_days[2] > 0:
+                        if current_no_endurance_days == 0:
+                            baseline_hours[i + 1] = endurance_day_one_hours
+                        elif current_no_endurance_days == 1:
+                            baseline_hours[i + 1] = endurance_day_two_hours
+                        elif current_no_endurance_days == 2:
+                            baseline_hours[i + 1] = recovery_day_hours
+                        else:
+                            baseline_hours[i + 1] = interval_day_three_hours
+                        current_no_endurance_days += 1
+                        baseline_focus[i + 1] = 1
+                        self.total_lt_days[2] -= 1
+
+            elif baseline_focus[i] > 1:
+                if baseline_hours[i + 1] == -1:
+                    if self.total_lt_days[2] > 0:
                         if current_no_endurance_days == 0:
                             baseline_hours[i + 1] = endurance_day_one_hours
                         elif current_no_endurance_days == 1:
