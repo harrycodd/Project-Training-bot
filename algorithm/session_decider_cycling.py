@@ -139,7 +139,7 @@ class user_cycling_predictor:
         if self.total_lt_days == []:
             return False
 
-        self.total_lt_days = [round(i * self.ideal_rest_days) for i in self.total_lt_days]
+        self.total_lt_days = [round(i * (7-self.ideal_rest_days)) for i in self.total_lt_days]
 
         current_no_interval_days = 0
 
@@ -175,6 +175,8 @@ class user_cycling_predictor:
                             baseline_hours[i + 1] = recovery_day_hours
                         baseline_focus[i] = 1
                         self.total_lt_days[2] -= 1
+
+        print(baseline_focus, baseline_hours, self.total_lt_days)
 
                     
 
