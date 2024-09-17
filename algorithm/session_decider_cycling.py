@@ -140,6 +140,8 @@ class user_cycling_predictor:
         if self.total_lt_days == []:
             return False
 
+        print(round(7*0.1))
+
         self.total_lt_days = [round(i * (7-self.ideal_rest_days)) for i in self.total_lt_days]
 
         current_no_interval_days = 0
