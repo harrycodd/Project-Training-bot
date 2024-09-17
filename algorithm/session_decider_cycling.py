@@ -340,4 +340,4 @@ while True:
 user = user_cycling_predictor(ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type, avaliable_days)
 """
 
-user = user_cycling_predictor(18, 20, 60, 330, 188, 1, [3,3,3,0,1,2,2] )
+user = user_cycling_predictor(18, 20, 60, 330, 188, 1, [3,3,3,0,1,2,2])
