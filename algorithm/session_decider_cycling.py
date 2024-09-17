@@ -98,6 +98,7 @@ class user_cycling_predictor:
                 break
             prev_i = i
 
+
         # Creates a 0 prediction for basing it off
         baseline_hours = [-1,-1,-1,-1,-1,-1,-1]
         baseline_focus = [-1,-1,-1,-1,-1,-1,-1]
