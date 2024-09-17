@@ -174,7 +174,7 @@ class user_cycling_predictor:
                             baseline_hours[i + 1] = endurance_day_one_hours
                         elif current_no_endurance_days == 1:
                             baseline_hours[i + 1] = endurance_day_two_hours
-                        elif current_no_interval_days == 2:
+                        elif current_no_endurance_days == 2:
                             baseline_hours[i + 1] = recovery_day_hours
                         else:
                             baseline_hours[i + 1] = interval_day_three_hours
@@ -188,7 +188,7 @@ class user_cycling_predictor:
                         baseline_hours[i] = endurance_day_one_hours
                     elif current_no_endurance_days == 1:
                         baseline_hours[i] = endurance_day_two_hours
-                    elif current_no_interval_days == 2:
+                    elif current_no_endurance_days == 2:
                         baseline_hours[i] = recovery_day_hours
                     else:
                         baseline_hours[i] = interval_day_three_hours
@@ -197,6 +197,7 @@ class user_cycling_predictor:
                     self.total_lt_days[2] -= 1
 
         print(baseline_focus, baseline_hours, self.total_lt_days, self.this_weeks_hours)
+        print(endurance_day_one_hours, endurance_day_two_hours, interval_day_one_hours, interval_day_two_hours, interval_day_three_hours, recovery_day_hours)
 
                     
 
