@@ -89,7 +89,7 @@ class user_cycling_predictor:
             prev_i = i
 
         # Based upon current ftp + fitness we can calculate a good estimate of the tss build for the week
-        self.ideal_weekly_tss_build = ((1 - 0.00184333 + (0.0000277333 * self.current_ftp_power))^7 * self.current_fitness)
+        self.ideal_weekly_tss_build = ((1 - 0.00184333 + (0.0000277333 * self.current_ftp_power))**7 * self.current_fitness)
 
         # Our maximum tss is derived from number of hours. If we are at our maximum hours we cannot train anymore
         if self.ideal_weekly_tss_build > self.max_weekly_tss:
@@ -143,7 +143,7 @@ class user_cycling_predictor:
 
         current_no_interval_days = 0
 
-        for i in range(baseline_hours):
+        for i in range(len(baseline_hours)):
             if baseline_hours[i] == 0:
                 if baseline_hours[i + 1] == -1:
                     if self.total_lt_days[0] > 0:
