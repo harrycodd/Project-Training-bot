@@ -102,6 +102,8 @@ class user_cycling_predictor:
                 baseline_predicition[position]
             position += 1
 
+        day_schedule = [0.18*self.ideal_hours + 1, 0.23*self.ideal_hours, 0.18*self.ideal_hours]
+
 
 def estimate_current_fitness(hours_weekly):
     return (hours_weekly * 50) / 7 < 20
