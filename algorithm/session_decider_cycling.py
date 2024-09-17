@@ -192,12 +192,11 @@ class user_cycling_predictor:
                         baseline_hours[i] = recovery_day_hours
                     else:
                         baseline_hours[i] = interval_day_three_hours
-                    print(current_no_endurance_days)
                     current_no_endurance_days += 1
                     baseline_focus[i] = 1
                     self.total_lt_days[2] -= 1
 
-        print(baseline_focus, baseline_hours, self.total_lt_days)
+        print(baseline_focus, baseline_hours, self.total_lt_days, self.this_weeks_hours)
 
                     
 
