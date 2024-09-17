@@ -95,30 +95,12 @@ class user_cycling_predictor:
 
         baseline_predicition = [-1,-1,-1,-1,-1,-1,-1]
         days_to_train = [0,3,3,3,1,2,2]
+
+        position = 0
         for i in days_to_train:
             if i == 0:
-                rest_day_count += 1
-
-        if rest_day_count > self.ideal_rest_days + 1:
-            pass
-
-        else:
-            position = 0
-            for i in days_to_train:
-                if i == 0:
-                    baseline_predicition[position]
-                position += 1
-            if rest_day_count == self.ideal_rest_days + 1:
-                pass
-            elif rest_day_count < self.ideal_rest_days:
-                pass
-
-        
-
-
-
-        
-    
+                baseline_predicition[position]
+            position += 1
 
 
 def estimate_current_fitness(hours_weekly):
