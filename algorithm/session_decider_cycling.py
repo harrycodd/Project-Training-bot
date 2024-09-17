@@ -70,6 +70,8 @@ class user_cycling_predictor:
         self.current_lt3_days = current_lt3_days
 
         self.current_tsb = self.current_fitness - self.current_fatigue
+
+        self.make_next_day_prediction()
         
 
     
@@ -81,7 +83,7 @@ class user_cycling_predictor:
         # Converts ideal week hours in to number of rest days
         prev_i = 99
         for i in hours_to_rest:
-            if x >= i and prev_i > x:
+            if self.ideal_hours >= i and prev_i > self.ideal_hours:
                 self.ideal_rest_days = hours_to_rest[i]
                 break
             prev_i = i
@@ -97,13 +99,13 @@ class user_cycling_predictor:
         self.this_weeks_hours = float(round(self.ideal_weekly_tss_build / 25)) / 2
 
         # Creates a 0 prediction for basing it off
-        baseline_predicition = [-1,-1,-1,-1,-1,-1,-1]
-        days_to_train = [0,3,3,3,1,2,2] # to be removed and passed in
+        baseline_hours = [-1,-1,-1,-1,-1,-1,-1]
+        baseline_focus = [-1,-1,-1,-1,-1,-1,-1]
 
         position = 0
-        for i in days_to_train:
+        for i in self.avaliable_days:
             if i == 0:
-                baseline_predicition[position]
+                baseline_hours[position]
             position += 1
 
         if self.this_weeks_hours >= 6:
@@ -125,6 +127,57 @@ class user_cycling_predictor:
         endurance_day_one_hours = 0.18 * self.this_weeks_hours + 1
         endurance_day_two_hours = 0.18 * self.this_weeks_hours + 0.25
 
+        self.total_lt_days = []
+
+        prev_i = 99
+        for i in hours_to_ltr_conversion:
+            if self.this_weeks_hours >= i and prev_i > self.this_weeks_hours:
+                self.total_lt_days = hours_to_ltr_conversion[i]
+                break
+            prev_i = i
+
+        if self.total_lt_days == []:
+            return False
+
+        self.total_lt_days = [round(i * self.ideal_rest_days) for i in self.total_lt_days]
+
+        current_no_interval_days = 0
+
+        for i in range(baseline_hours):
+            if baseline_hours[i] == 0:
+                if baseline_hours[i + 1] == -1:
+                    if self.total_lt_days[0] > 0:
+                        if current_no_interval_days == 0:
+                            baseline_hours[i + 1] = interval_day_one_hours
+                        elif current_no_interval_days == 1:
+                            baseline_hours[i + 1] = interval_day_two_hours
+                        else:
+                            baseline_hours[i + 1] = interval_day_three_hours
+                        baseline_focus[i] = 3
+                        self.total_lt_days[0] -= 1
+
+                    if self.total_lt_days[1] > 0:
+                        if current_no_interval_days == 0:
+                            baseline_hours[i + 1] = interval_day_one_hours
+                        elif current_no_interval_days == 1:
+                            baseline_hours[i + 1] = interval_day_two_hours
+                        else:
+                            baseline_hours[i + 1] = interval_day_three_hours
+                        baseline_focus[i] = 2
+                        self.total_lt_days[1] -= 1
+                    
+                    if self.total_lt_days[2] > 0:
+                        if current_no_interval_days == 0:
+                            baseline_hours[i + 1] = endurance_day_one_hours
+                        elif current_no_interval_days == 1:
+                            baseline_hours[i + 1] = endurance_day_two_hours
+                        else:
+                            baseline_hours[i + 1] = recovery_day_hours
+                        baseline_focus[i] = 1
+                        self.total_lt_days[2] -= 1
+
+                    
+
 
 def estimate_current_fitness(hours_weekly):
     return (hours_weekly * 50) / 7 < 20
@@ -135,6 +188,7 @@ def estimate_current_ftp_hr(age):
 def estimate_current_fatigue(current_fitness):
     return 
 
+"""
 while True:
     new_rider = input("Are you completely new to any sort of fitness? y/n")
     if new_rider == "y":
@@ -163,4 +217,7 @@ while True:
 
     print("Invalid input")
 
-user = user_cycling_predictor(ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type)
+user = user_cycling_predictor(ideal_hours, current_fitness, current_fatigue, current_ftp_power, current_ftp_hr, current_week_type, avaliable_days)
+"""
+
+user = user_cycling_predictor(18, 60, 60, 330, 188, 1, [0,3,3,3,1,2,2] )
