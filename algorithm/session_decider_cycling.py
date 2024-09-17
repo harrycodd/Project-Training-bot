@@ -142,6 +142,7 @@ class user_cycling_predictor:
         self.total_lt_days = [round(i * (7-self.ideal_rest_days)) for i in self.total_lt_days]
 
         current_no_interval_days = 0
+        current_no_endurance_days = 0
 
         for i in range(len(baseline_hours)):
             if baseline_hours[i] == 0:
@@ -153,6 +154,7 @@ class user_cycling_predictor:
                             baseline_hours[i + 1] = interval_day_two_hours
                         else:
                             baseline_hours[i + 1] = interval_day_three_hours
+                        current_no_interval_days += 1
                         baseline_focus[i] = 3
                         self.total_lt_days[0] -= 1
 
@@ -163,18 +165,32 @@ class user_cycling_predictor:
                             baseline_hours[i + 1] = interval_day_two_hours
                         else:
                             baseline_hours[i + 1] = interval_day_three_hours
+                        current_no_interval_days += 1
                         baseline_focus[i] = 2
                         self.total_lt_days[1] -= 1
                     
                     if self.total_lt_days[2] > 0:
-                        if current_no_interval_days == 0:
+                        if current_no_endurance_days == 0:
                             baseline_hours[i + 1] = endurance_day_one_hours
-                        elif current_no_interval_days == 1:
+                        elif current_no_endurance_days == 1:
                             baseline_hours[i + 1] = endurance_day_two_hours
                         else:
                             baseline_hours[i + 1] = recovery_day_hours
+                        current_no_endurance_days += 1
                         baseline_focus[i] = 1
                         self.total_lt_days[2] -= 1
+
+            elif baseline_hours[i] == -1:
+                if self.total_lt_days[2] > 0:
+                    if current_no_endurance_days == 0:
+                        baseline_hours[i + 1] = endurance_day_one_hours
+                    elif current_no_endurance_days == 1:
+                        baseline_hours[i + 1] = endurance_day_two_hours
+                    else:
+                        baseline_hours[i + 1] = recovery_day_hours
+                    current_no_endurance_days += 1
+                    baseline_focus[i] = 1
+                    self.total_lt_days[2] -= 1
 
         print(baseline_focus, baseline_hours, self.total_lt_days)
 
